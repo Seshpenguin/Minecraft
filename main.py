@@ -74,6 +74,7 @@ GRASS = tex_coords((1, 0), (0, 1), (0, 0))
 SAND = tex_coords((1, 1), (1, 1), (1, 1))
 BRICK = tex_coords((2, 0), (2, 0), (2, 0))
 STONE = tex_coords((2, 1), (2, 1), (2, 1))
+GLASS = tex_coords((3, 0), (3, 0), (3, 0))
 
 FACES = [
     ( 0, 1, 0),
@@ -466,7 +467,7 @@ class Window(pyglet.window.Window):
         self.dy = 0
 
         # A list of blocks the player can place. Hit num keys to cycle.
-        self.inventory = [BRICK, GRASS, SAND]
+        self.inventory = [BRICK, GRASS, SAND, GLASS]
 
         # The current block the user can place. Hit num keys to cycle.
         self.block = self.inventory[0]
@@ -483,7 +484,8 @@ class Window(pyglet.window.Window):
         self.label = pyglet.text.Label('', font_name='Arial', font_size=18,
             x=10, y=self.height - 10, anchor_x='left', anchor_y='top',
             color=(0, 0, 0, 255))
-
+        #Block selection to console
+        print(self.model)
         # This call schedules the `update()` method to be called
         # TICKS_PER_SEC. This is the main game event loop.
         pyglet.clock.schedule_interval(self.update, 1.0 / TICKS_PER_SEC)
@@ -883,11 +885,18 @@ def setup():
 
 
 def main():
+    print "Welcome to CraftPy!"
+    print "Initializing Pyglet Windows..."
     window = Window(width=800, height=600, caption='Pyglet', resizable=True)
+    print "Complete!"
     # Hide the mouse cursor and prevent the mouse from leaving the window.
     window.set_exclusive_mouse(True)
+    print "Setting up CraftPy..."
     setup()
+    print "Complete!"
+    print "Starting CraftPy..."
     pyglet.app.run()
+    print "CraftPy closed."
 
 
 if __name__ == '__main__':
