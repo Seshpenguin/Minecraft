@@ -17,7 +17,10 @@ https://github.com/fogleman/Minecraft
 		python get-pip.py
 	Than install pyglet:
 		pip install pyglet
-	
+	If Pip isnt working, then you may have to add it to your Enviroment Variables.
+	First, find the folder Pip is on your system (For me its at: C:\Program Files\Python 3.5\Scripts\),
+	then add that folder to your Enviroment Variables (Google how to do that)
+NOTE: These instructions were made for Windows (In my case, Windows Server 2012 R2/Windows 8.1)
 
 ### Mac
 
