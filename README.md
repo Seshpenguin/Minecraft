@@ -8,7 +8,7 @@ Credits to Michael Fogleman for the base sourcecode to this project!
 https://github.com/fogleman/Minecraft
 
 ## How to Run
-
+	Make sure you have Python 2 installed (Python 3 will not work)
 	First, clone the Repo to a folder on you PC:
 		git clone https://github.com/Seshpenguin/Minecraft.git
 	Then run CraftPy!
