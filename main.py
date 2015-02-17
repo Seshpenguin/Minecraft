@@ -174,9 +174,10 @@ class Model(object):
             b = random.randint(-o, o)  # z position of the hill
             c = -1  # base of the hill
             h = random.randint(1, 6)  # height of the hill
-            s = random.randint(4, 8)  # 2 * s is the side length of the hill
+            s = random.randint(8, 16)  # 2 * s is the side length of the hill
             d = 1  # how quickly to taper off the hills
-            t = random.choice([GRASS, SAND, BRICK])
+            t = GRASS
+            print("Generating Terrain...")
             for y in xrange(c, c + h):
                 for x in xrange(a - s, a + s + 1):
                     for z in xrange(b - s, b + s + 1):
@@ -186,6 +187,7 @@ class Model(object):
                             continue
                         self.add_block((x, y, z), t, immediate=False)
                 s -= d  # decrement side lenth so hills taper off
+
 
     def hit_test(self, position, vector, max_distance=8):
         """ Line of sight search from current position. If a block is
