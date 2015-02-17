@@ -1,12 +1,14 @@
 import math
 import random
 import time
+import socket
 
 from collections import deque
 from pyglet import image
 from pyglet.gl import *
 from pyglet.graphics import TextureGroup
 from pyglet.window import key, mouse
+
 
 TICKS_PER_SEC = 60
 
@@ -169,6 +171,8 @@ class Model(object):
 
         # generate the hills randomly
         o = n - 10
+        level = open('level.txt', 'a')
+        
         for _ in xrange(120):
             a = random.randint(-o, o)  # x position of the hill
             b = random.randint(-o, o)  # z position of the hill
@@ -186,8 +190,11 @@ class Model(object):
                         if (x - 0) ** 2 + (z - 0) ** 2 < 5 ** 2:
                             continue
                         self.add_block((x, y, z), t, immediate=False)
+                        hillcoord = x, y, z
+                        level.write(str(hillcoord) + "\n")
                 s -= d  # decrement side lenth so hills taper off
-
+                
+                
 
     def hit_test(self, position, vector, max_distance=8):
         """ Line of sight search from current position. If a block is
@@ -839,7 +846,6 @@ class Window(pyglet.window.Window):
             pyglet.clock.get_fps(), x, y, z,
             len(self.model._shown), len(self.model.world))
         self.label.draw()
-
     def draw_reticle(self):
         """ Draw the crosshairs in the center of the screen.
 
